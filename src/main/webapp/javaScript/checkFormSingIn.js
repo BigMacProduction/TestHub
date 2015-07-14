@@ -11,7 +11,15 @@
 			form.username.focus();
 			return false;
 		}
-
+				
+		re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		if (!re.test(form.email.value)) {
+			alert("Error: email is incorrect");
+			form.email.focus();
+			return false;
+		}
+		
+		
 		if (form.password.value != "" && form.password.value == form.password1.value) {
 			if (form.password1.value.length < 6) {
 				alert("Error: Password must contain at least six characters!");
@@ -41,6 +49,7 @@
 				form.password.focus();
 				return false;
 			}
+			
 		} else {
 			alert("Error: Please check that you've entered and confirmed your password!");
 			form.password.focus();

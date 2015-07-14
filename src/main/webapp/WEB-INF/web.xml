@@ -7,6 +7,9 @@
         </session-timeout>
     </session-config>
     
+			<!--     JSP  		-->
+    
+    
 <servlet>
 	<servlet-name>login</servlet-name>
 	<jsp-file>/jsp/logIn.jsp</jsp-file>
@@ -71,8 +74,41 @@
 	<url-pattern>/instructions</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>passwordRestore</servlet-name>
+	<jsp-file>/jsp/passwordRestore.jsp</jsp-file>
+</servlet>
 
 
+ 
+<servlet-mapping>
+	<servlet-name>passwordRestore</servlet-name>
+	<url-pattern>/passwordRestore</url-pattern>
+</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>passowordRecoveryRequest</servlet-name>
+		<jsp-file>/jsp/passowordRecoveryRequest.jsp</jsp-file>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>passowordRecoveryRequest</servlet-name>
+		<url-pattern>/passowordRecoveryRequest</url-pattern>
+	</servlet-mapping>
+
+
+
+
+				<!--    JSP     	-->
+
+
+
+
+
+				<!-- 	SERVLETS    -->
+				
+				
  <servlet>
  	<description>
  	</description>
@@ -95,6 +131,16 @@
  	<servlet-name>LoginServlet</servlet-name>
  	<servlet-class>com.testhub.servlets.LoginServlet</servlet-class>
  </servlet>
+ <servlet>
+ 	<display-name>PasswordRequestServlet</display-name>
+ 	<servlet-name>PasswordRequestServlet</servlet-name>
+ 	<servlet-class>com.testhub.servlets.PasswordRequestServlet</servlet-class>
+ </servlet>
+ <servlet>
+ 	<display-name>PasswordRecoveryServlet</display-name>
+ 	<servlet-name>PasswordRecoveryServlet</servlet-name>
+ 	<servlet-class>com.testhub.servlets.PasswordRecoveryServlet</servlet-class>
+ </servlet>
  
 <servlet-mapping>
 	<servlet-name>SingInServlet</servlet-name>
@@ -108,8 +154,16 @@
 	<servlet-name>LoginServlet</servlet-name>
 	<url-pattern>/LoginServlet</url-pattern>
 </servlet-mapping>
+<servlet-mapping>
+	<servlet-name>PasswordRequestServlet</servlet-name>
+	<url-pattern>/PasswordRequestServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>PasswordRecoveryServlet</servlet-name>
+	<url-pattern>/PasswordRecoveryServlet</url-pattern>
+</servlet-mapping>
 
-    
+				<!--     SERVLETS 			-->
     
     <welcome-file-list>
         <welcome-file>jsp/welcome.jsp</welcome-file>

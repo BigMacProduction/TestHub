@@ -26,9 +26,7 @@ public class ValidateServlet extends HttpServlet {
 		String validationExpression = request.getParameter("validationExpression");
 		AccountsChecker checker = new AccountsChecker();
 		AccountMaker myMaker = new AccountMaker();
-		
-		PrintWriter out = response.getWriter();
-		
+				
 		if(checker.checkRawAccountExistance(validationExpression)){
 			System.out.println(validationExpression+" bebore creating validated account");
 			myMaker.createAccount(validationExpression);

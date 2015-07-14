@@ -2,7 +2,6 @@ package com.testhub.servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.testhub.classes.AccountMaker;
-import com.testhub.classes.SendMailSSL;
 import com.testhub.classes.AccountsChecker;
+import com.testhub.classes.SendMailSSL;
 import com.testhub.classes.ValidationExpressionGenerator;
 
 /**
@@ -20,34 +19,16 @@ import com.testhub.classes.ValidationExpressionGenerator;
 public class SingInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public SingInServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// DbInitializer dbIni = new DbInitializer();//////////////////////////////////////////////////////////////
-		// dbIni.generateDb();/////////////////////////////////////////////////////////////////////////////////////
-
+		
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 
@@ -72,9 +53,11 @@ public class SingInServlet extends HttpServlet {
 			accMaker.createRawAccount(login, email, firstName, lastName, password,validationExpression);
 			
 			SendMailSSL makeMail = new SendMailSSL();
-			makeMail.send(email, validationExpression);
+			makeMail.sendValidationLink(email, validationExpression);
 			//redirection to JSP page
 			RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/instructions");
+			request.setAttribute("title", "Validation instruction");
+			request.setAttribute("message", "To validate your account follow to your  mail-box");
 			reqDispatcher.forward(request,response);
 			
 		} else {

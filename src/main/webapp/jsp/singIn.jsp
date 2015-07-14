@@ -10,6 +10,18 @@
 <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="javaScript/checkFormSingIn.js"></script>
 
+
+<script >
+function (form) {
+	
+	alert("Hello");
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(form.email.value);
+}
+
+</script>
+
+
 </head>
 
 <body>
@@ -61,12 +73,7 @@
 
 	</div>
 
-	<div class="login-help">
-
-		<p>
-			Forgot your password? <a href="index.html">Click here to reset it</a>
-		</p>
-	</div>
+	
 	</section>
 
 </body>

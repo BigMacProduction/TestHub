@@ -12,8 +12,23 @@ import javax.mail.internet.MimeMessage;
  
 public class SendMailSSL {
 	
+	public boolean sendRecoveryLink(String mailAddress, String linkTail){
+		 String subject = "Recovery password link for TestHub";
+		 String messageText = "Hello Dear! here is your link to recover your password:";
+		 String linkHead = Container.getLinkHeadrecovery();
+		 return this.send(subject, messageText, mailAddress, linkHead, linkTail);
+			 
+	};
 	
-	public boolean send(String mailAddress, String messageText){
+    public boolean sendValidationLink(String mailAddress, String linkTail){
+    	 String subject = "Account validation link for TestHub";
+    	 String messageText = "Hello Dear! here is your link to validate your account:";
+		 String linkHead = Container.getLinkHeadrecovery();
+		 return this.send(subject, messageText, mailAddress, linkHead, linkTail);
+	};
+	
+	
+	private boolean send(String subject, String messageText,String mailAddress, String linkHead, String linkTail){
 		
 		
 		Properties props = new Properties();
@@ -37,13 +52,14 @@ public class SendMailSSL {
  
 		try {
  
+			
+			
+			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(Container.getAppownmailaddress()));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(mailAddress));
-			message.setSubject("Validation link for TestHub");
-			message.setText("http://localhost:8081/GoodWeb/ValidateServlet?validationExpression="+messageText);
- 
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(mailAddress));
+			message.setSubject(subject);
+			message.setText(messageText+linkHead+linkTail );
 			Transport.send(message);
  
 			System.out.println("Done");

@@ -56,6 +56,7 @@ public class AccountMaker {
 	private void createAccount(String login, String email, String firstName, String lastName, String password) {
 		Connection con = null;
 		PreparedStatement stmt = null;
+		PreparedStatement stmtPassRec = null;
 		ResultSet rs = null;
 
 		try {
@@ -65,6 +66,12 @@ public class AccountMaker {
 
 			stmt = (PreparedStatement) con.prepareStatement("INSERT INTO `testhub`.`account` "
 					+ "(`firstName`, `lastName`, `login`, `email`, `password`) " + "VALUES (?,?,?,?,?);");
+			
+			stmtPassRec = con.prepareStatement("INSERT INTO `testhub`.`passwordRecovery` "
+					+ "(`email`) " + "VALUES (?);");
+			
+			
+
 
 			stmt.setString(1, firstName);
 			stmt.setString(2, lastName);
@@ -73,6 +80,10 @@ public class AccountMaker {
 			stmt.setString(5, password);
 
 			stmt.executeUpdate();
+			
+			stmtPassRec.setString(1, email);
+			
+			stmtPassRec.executeUpdate();
 
 			// Lets get The ID of just created account
 			rs = stmt.executeQuery("SELECT accountId FROM `testhub`.`account` where login = \'" + login + "\';");

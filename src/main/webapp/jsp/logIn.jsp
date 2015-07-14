@@ -88,6 +88,12 @@
 				</p>
 			</form>
 		</div>
+		<div class="login-help">
+
+		<p>
+			Forgot your password? <a href="passowordRecoveryRequest">Click here to reset it</a>
+		</p>
+	</div>
 		</section>
 </body>
 </html>

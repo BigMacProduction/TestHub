@@ -16,8 +16,8 @@
 
 	<section class="container">
 	<div class="login">
-		<h1>Validation instruction</h1>
-		<h4>For furher validadoin of Your account, please through to your mail box, and follow for validation link </h4>
+		<h1><%= request.getAttribute("title") %> </h1>
+		<h4><%= request.getAttribute("message") %></h4>
 	</div>
 	</section>
 
