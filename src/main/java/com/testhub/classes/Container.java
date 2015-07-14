@@ -23,10 +23,6 @@ public class Container {
 	private static final String LINK_HEAD_RECOVERY = "http://localhost:8083/GoodWeb/PasswordRecoveryServlet?recoveryExpression=";
 	
 	
-	
-	
-	
-	
 	private static final String SQL_SCHEMA="testhub";
 	private static final String appOwnMailAddress="testHubMail@gmail.com";
 	private static final String appOwnMailPassword="4jugf45G2ggeyRRdkuw";
