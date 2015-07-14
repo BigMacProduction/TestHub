@@ -13,10 +13,13 @@ import com.testhub.classes.PasswordRecovery;
 
 /**
  * Servlet implementation class PasswordRecoveryServlet
+ * Author Sopolev Vlad
  */
 public class PasswordRecoveryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PasswordRecovery passRec = new PasswordRecovery();
 		HttpSession session = request.getSession();
